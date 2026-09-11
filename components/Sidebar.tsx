@@ -28,7 +28,7 @@ interface SidebarProps {
 }
 
 export function Sidebar({ onPrint }: SidebarProps) {
-  const settings = useAppSelector((state) => state.settings);
+  const settings = useAppSelector((state) => state.sheetData);
   const dispatch = useAppDispatch();
 
   return (

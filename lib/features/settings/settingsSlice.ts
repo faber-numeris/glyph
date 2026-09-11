@@ -3,8 +3,8 @@ import { DEFAULT_SETTINGS, type SheetSettings } from "@/components/settings";
 
 const initialState: SheetSettings = DEFAULT_SETTINGS;
 
-const settingsSlice = createSlice({
-  name: "settings",
+export const sheetDataSlice = createSlice({
+  name: "sheetData",
   initialState,
   reducers: {
     setStudentName(state, action: PayloadAction<string>) {
@@ -20,7 +20,7 @@ const settingsSlice = createSlice({
       state.lines = action.payload;
     },
     resetSettings() {
-      return initialState;
+      return DEFAULT_SETTINGS;
     },
   },
 });
@@ -31,6 +31,6 @@ export const {
   setPracticeText,
   setLines,
   resetSettings,
-} = settingsSlice.actions;
+} = sheetDataSlice.actions;
 
-export default settingsSlice.reducer;
+export default sheetDataSlice.reducer;

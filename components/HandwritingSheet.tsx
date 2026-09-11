@@ -1,14 +1,36 @@
 "use client";
 
 import styles from "./HandwritingSheet.module.css";
+import {useSelector} from "react-redux";
+import {RootState} from "@/lib/store";
 
-// TODO: always use arrow functions when creating react components. We should update the AGENTS.md file with that information.
+export const HandwritingSheet = () => {
+    const studentName = useSelector((state: RootState) => state.sheetData.studentName);
+    const gradeName = useSelector((state: RootState) => state.sheetData.grade);
+    const practiceText = useSelector((state: RootState) => state.sheetData.practiceText);
+    const lines = useSelector((state: RootState) => state.sheetData.lines);
 
-export function HandwritingSheet() {
-  return (
-      <div className={styles.sheetCard} >
-        <div className={styles.sheetCardHeader}>Header Goes Here</div>
-        <div className={styles.lauda}>Repeated Text Goes Here and the lines etc etc</div>
-      </div>
-  )
-}
+    return (
+        <div className={styles.sheetCard}>
+            <header className={styles.sheetCardHeader}>
+                <div>
+                    <div className={styles.headerName}>{studentName}</div>
+                    <div className={styles.headerGrade}>{gradeName}</div>
+                </div>
+                <div className={styles.headerTitle}>Handwriting Practice</div>
+            </header>
+
+            <div className={styles.writingLines}>
+                {Array.from({length: lines}).map((_, index) => (
+                    <>
+                        <div className={styles.writingLine} key={index}>
+                            {practiceText}
+                        </div>
+
+                    </>
+
+                ))}
+            </div>
+        </div>
+    )
+};

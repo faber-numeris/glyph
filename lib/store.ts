@@ -2,11 +2,11 @@
 
 import { useDispatch, useSelector, type TypedUseSelectorHook } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
-import settingsReducer from "./features/settings/settingsSlice";
+import sheetDataReducer from "./features/settings/settingsSlice";
 
 export const store = configureStore({
   reducer: {
-    settings: settingsReducer,
+    sheetData: sheetDataReducer,
   },
 });
 
