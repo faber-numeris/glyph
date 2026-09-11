@@ -1,0 +1,43 @@
+.sheetCard {
+    background: white;
+    width: 100%;
+    max-width: 8.5in;
+    height: 11in;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    padding: 40px 30px;
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.lauda {
+    height: 100%;
+    font-family: "Marelle Baton", cursive;
+    font-size: 1.3em;
+    background:
+            linear-gradient(#666, #666) 0 5px / 100% 2px no-repeat,
+            repeating-linear-gradient(
+                    to right,
+                    #666 0 4px,
+                    transparent 4px 8px
+            ) 0 15px / 100% 2px no-repeat,
+            linear-gradient(#666, #666) 0 25px / 100% 2px no-repeat,
+            linear-gradient(#666, #666) 0 35px / 100% 2px no-repeat;
+}
+
+@media print {
+    .sheetCard {
+        box-shadow: none;
+        border-radius: 0;
+        max-width: 100%;
+        padding: 0.4in;
+    }
+}
+
+@media (max-width: 768px) {
+    .sheetCard {
+        max-width: 100%;
+        height: auto;
+        padding: 30px 20px;
+    }
+}

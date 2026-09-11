@@ -1,68 +1,37 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client";
+
+import { Button } from "@mantine/core";
+import { IconPrinter } from "@tabler/icons-react";
+import { HandwritingSheet } from "@/components/HandwritingSheet";
+import { Sidebar } from "@/components/Sidebar";
+import layoutStyles from "./page.module.css";
 
 export default function Home() {
+  const handlePrint = () => {
+    window.print();
+  };
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>
-            To get started, edit the{" "}
-            <code className={styles.code}>page.tsx</code> file.
-          </h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <div className={layoutStyles.appLayout}>
+      <div className={layoutStyles.appSidebarZone}>
+        <Sidebar onPrint={handlePrint} />
+      </div>
+
+      <main className={layoutStyles.sheetZone}>
+        <div className={layoutStyles.sheetHinter}>
+          <Button
+            size="xs"
+            variant="filled"
+            color="indigo"
+            autoContrast
+            leftSection={<IconPrinter size={16} />}
+            onClick={handlePrint}
           >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            Print
+          </Button>
         </div>
+
+        <HandwritingSheet />
       </main>
     </div>
   );
