@@ -9,7 +9,8 @@ import {
     setPracticeText,
     setStudentName,
 } from "@/lib/features/settings/settingsSlice";
-import {translations, useTranslation, type Language} from "@/lib/i18n";
+import {useTranslation} from "@/lib/i18n";
+import {translations, type Language} from "@/lib/translations";
 import {setLanguage} from "@/lib/features/language/languageSlice";
 import {useAppDispatch, useAppSelector} from "@/lib/store";
 

@@ -1,5 +1,5 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import { DEFAULT_LANGUAGE, type Language } from "@/lib/i18n";
+import { DEFAULT_LANGUAGE, type Language } from "@/lib/translations";
 
 export const languageSlice = createSlice({
   name: "language",
