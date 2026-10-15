@@ -2,11 +2,13 @@
 
 import { useDispatch, useSelector, type TypedUseSelectorHook } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
+import languageReducer from "./features/language/languageSlice";
 import sheetDataReducer from "./features/settings/settingsSlice";
 
 export const store = configureStore({
   reducer: {
     sheetData: sheetDataReducer,
+    language: languageReducer,
   },
 });
 

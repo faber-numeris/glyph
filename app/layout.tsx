@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`} {...mantineHtmlProps}>
+    <html lang="fr" className={`${geistSans.variable} ${geistMono.variable}`} {...mantineHtmlProps}>
       <head>
         <ColorSchemeScript defaultColorScheme="light" />
       </head>

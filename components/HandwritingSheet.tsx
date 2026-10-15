@@ -3,12 +3,14 @@
 import styles from "./HandwritingSheet.module.css";
 import {useSelector} from "react-redux";
 import {RootState} from "@/lib/store";
+import {useTranslation} from "@/lib/i18n";
 
 export const HandwritingSheet = () => {
     const studentName = useSelector((state: RootState) => state.sheetData.studentName);
     const gradeName = useSelector((state: RootState) => state.sheetData.grade);
     const practiceText = useSelector((state: RootState) => state.sheetData.practiceText);
     const lines = useSelector((state: RootState) => state.sheetData.lines);
+    const {t} = useTranslation();
 
     return (
         <div className={styles.sheetCard}>
@@ -17,7 +19,7 @@ export const HandwritingSheet = () => {
                     <div className={styles.headerName}>{studentName}</div>
                     <div className={styles.headerGrade}>{gradeName}</div>
                 </div>
-                <div className={styles.headerTitle}>Handwriting Practice</div>
+                <div className={styles.headerTitle}>{t("sheetTitle")}</div>
             </header>
 
             <div className={styles.writingLines}>

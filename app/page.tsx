@@ -4,9 +4,11 @@ import { Button } from "@mantine/core";
 import { IconPrinter } from "@tabler/icons-react";
 import { HandwritingSheet } from "@/components/HandwritingSheet";
 import { Sidebar } from "@/components/Sidebar";
+import { useTranslation } from "@/lib/i18n";
 import layoutStyles from "./page.module.css";
 
 export default function Home() {
+  const { t } = useTranslation();
   const handlePrint = () => {
     window.print();
   };
@@ -27,7 +29,7 @@ export default function Home() {
             leftSection={<IconPrinter size={16} />}
             onClick={handlePrint}
           >
-            Print
+            {t("print")}
           </Button>
         </div>
 

@@ -1,6 +1,6 @@
 "use client";
 
-import {Button, Divider, Group, NumberInput, Paper, Stack, Text, Textarea, TextInput, Title,} from "@mantine/core";
+import {Button, Divider, Group, NumberInput, Paper, Select, Stack, Text, Textarea, TextInput, Title,} from "@mantine/core";
 import {IconBraces, IconPrinter, IconWriting} from "@tabler/icons-react";
 import {
     resetSettings,
@@ -9,6 +9,8 @@ import {
     setPracticeText,
     setStudentName,
 } from "@/lib/features/settings/settingsSlice";
+import {translations, useTranslation, type Language} from "@/lib/i18n";
+import {setLanguage} from "@/lib/features/language/languageSlice";
 import {useAppDispatch, useAppSelector} from "@/lib/store";
 
 interface SidebarProps {
@@ -18,6 +20,17 @@ interface SidebarProps {
 export function Sidebar({onPrint}: SidebarProps) {
     const settings = useAppSelector((state) => state.sheetData);
     const dispatch = useAppDispatch();
+    const {t, language} = useTranslation();
+
+    const handleLanguageChange = (value: string | null) => {
+        if (value !== "fr" && value !== "en") return;
+        const next: Language = value;
+        // Keep the default practice sentence in sync with the language if untouched.
+        if (settings.practiceText === translations[language].defaultPracticeText) {
+            dispatch(setPracticeText(translations[next].defaultPracticeText));
+        }
+        dispatch(setLanguage(next));
+    };
 
     return (
         <aside className="app-sidebar">
@@ -28,29 +41,29 @@ export function Sidebar({onPrint}: SidebarProps) {
                         <Title order={3}>Glyph</Title>
                     </Group>
                     <Text size="sm" c="dimmed">
-                        Design a handwriting practice sheet and print it for your student.
+                        {t("appDescription")}
                     </Text>
 
                     <Divider/>
 
                     <TextInput
-                        label="Student name"
-                        placeholder="e.g. Ava Martinez"
+                        label={t("studentName")}
+                        placeholder={t("studentNamePlaceholder")}
                         value={settings.studentName}
                         onChange={(event) => dispatch(setStudentName(event.currentTarget.value))}
                     />
 
                     <TextInput
-                        label="Grade"
-                        placeholder="e.g. 1st grade"
+                        label={t("grade")}
+                        placeholder={t("gradePlaceholder")}
                         value={settings.grade}
                         onChange={(event) => dispatch(setGrade(event.currentTarget.value))}
                     />
 
                     <Textarea
-                        label="Practice text"
-                        description="Replicated on every line of the sheet"
-                        placeholder="The quick brown fox jumps over the lazy dog"
+                        label={t("practiceText")}
+                        description={t("practiceTextDescription")}
+                        placeholder={t("defaultPracticeText")}
                         autosize
                         minRows={2}
                         maxRows={4}
@@ -59,7 +72,7 @@ export function Sidebar({onPrint}: SidebarProps) {
                     />
 
                     <NumberInput
-                        label="Number of lines"
+                        label={t("numberOfLines")}
                         min={4}
                         max={24}
                         allowDecimal={false}
@@ -79,17 +92,30 @@ export function Sidebar({onPrint}: SidebarProps) {
                         rightSection={<IconBraces size={14}/>}
                         onClick={onPrint}
                     >
-                        Print sheet
+                        {t("printSheet")}
                     </Button>
 
                     <Button
                         fullWidth
                         variant="subtle"
                         color="gray"
-                        onClick={() => dispatch(resetSettings())}
+                        onClick={() => dispatch(resetSettings(t("defaultPracticeText")))}
                     >
-                        Reset to defaults
+                        {t("resetToDefaults")}
                     </Button>
+
+                    <Divider/>
+
+                    <Select
+                        label={t("language")}
+                        allowDeselect={false}
+                        value={language}
+                        data={[
+                            {value: "fr", label: "Français"},
+                            {value: "en", label: "English"},
+                        ]}
+                        onChange={handleLanguageChange}
+                    />
                 </Stack>
             </Paper>
         </aside>

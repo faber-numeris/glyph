@@ -19,8 +19,11 @@ export const sheetDataSlice = createSlice({
     setLines(state, action: PayloadAction<number>) {
       state.lines = action.payload;
     },
-    resetSettings() {
-      return DEFAULT_SETTINGS;
+    resetSettings(_state, action: PayloadAction<string | undefined>) {
+      return {
+        ...DEFAULT_SETTINGS,
+        practiceText: action.payload ?? DEFAULT_SETTINGS.practiceText,
+      };
     },
   },
 });
