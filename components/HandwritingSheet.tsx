@@ -22,13 +22,14 @@ export const HandwritingSheet = () => {
 
             <div className={styles.writingLines}>
                 {Array.from({length: lines}).map((_, index) => (
-                    <>
-                        <div className={styles.writingLine} key={index}>
+                    <div key={index}>
+                        <div className={styles.writingLine}>
                             {practiceText}
                         </div>
-
-                    </>
-
+                        <div className={styles.writingLine}>
+                            &nbsp;
+                        </div>
+                    </div>
                 ))}
             </div>
         </div>
