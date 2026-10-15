@@ -49,6 +49,12 @@
     gap: 5px;
 }
 
+.writingLineContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .writingLine {
     margin-bottom: 2px;
     font-family: "Marelle Baton", cursive;

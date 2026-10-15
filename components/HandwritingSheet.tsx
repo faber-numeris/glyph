@@ -24,7 +24,7 @@ export const HandwritingSheet = () => {
 
             <div className={styles.writingLines}>
                 {Array.from({length: lines}).map((_, index) => (
-                    <div key={index}>
+                    <div key={index} className={styles.writingLineContainer}>
                         <div className={styles.writingLine}>
                             {practiceText}
                         </div>
