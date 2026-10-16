@@ -8,6 +8,6 @@ export interface SheetSettings {
 export const DEFAULT_SETTINGS: SheetSettings = {
   studentName: "",
   grade: "",
-  practiceText: "Portez ce vieux whisky au juge blond qui fume",
-  lines: 12,
+  practiceText: "Une lune, une robe, une soupe",
+  lines: 6,
 };

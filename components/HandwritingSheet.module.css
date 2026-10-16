@@ -43,39 +43,42 @@
 }
 
 .writingLines {
+    /* LG20: 12.7mm = 0.5in = exactly 48 CSS px (96dpi), so screen and print match */
+    --row-height: 10mm;
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 5px;
 }
 
-.writingLineContainer{
+.writingLineContainer {
     display: flex;
     flex-direction: column;
-    gap: 10px;
 }
 
+/* LG20 three-line row: headline (0), dashed midline (50%), baseline (100%) */
 .writingLine {
-    margin-bottom: 2px;
+    box-sizing: border-box;
+    height: var(--row-height);
+    line-height: var(--row-height);
+    /* Blank descender gap below the baseline, equal to the row height */
+    margin-bottom: var(--row-height);
     font-family: "Marelle Baton", cursive;
-    font-size: 20px;
+    font-size: calc(var(--row-height) * 0.78);
     color: #CCCCCC;
+    white-space: nowrap;
     background-image:
-            linear-gradient(#666, #666),
+            linear-gradient(#222, #222),
             repeating-linear-gradient(
                     to right,
-                    #666 0 4px,
+                    #6aa9e9 0 4px,
                     transparent 4px 8px
             ),
-            linear-gradient(#666, #666),
-            linear-gradient(#666, #666);
+            linear-gradient(#222, #222);
     background-position:
-            0 5px,
-            0 15px,
-            0 25px,
-            0 35px;
+            0 0,
+            0 50%,
+            0 calc(100% - 2px);
     background-size:
-            100% 1px,
             100% 1px,
             100% 1px,
             100% 1px;
