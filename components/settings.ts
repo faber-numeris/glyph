@@ -9,5 +9,5 @@ export const DEFAULT_SETTINGS: SheetSettings = {
   studentName: "",
   grade: "",
   practiceText: "Une lune, une robe, une soupe",
-  lines: 6,
+  lines: 5,
 };
